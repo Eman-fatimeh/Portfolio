@@ -1,9 +1,44 @@
-
 "use client";
 
+import { useEffect, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 export default function Hero() {
+  const [visibleLines, setVisibleLines] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+
+  const totalLines = 31;
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) {
+      setVisibleLines(totalLines);
+      setIsTyping(false);
+      return;
+    }
+
+    let currentLine = 0;
+
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        currentLine += 1;
+        setVisibleLines(currentLine);
+
+        if (currentLine >= totalLines) {
+          clearInterval(interval);
+          setTimeout(() => setIsTyping(false), 400);
+        }
+      }, 95);
+
+      return () => clearInterval(interval);
+    }, 500);
+
+    return () => clearTimeout(startDelay);
+  }, []);
+
   return (
     <>
       <style>{`
@@ -17,7 +52,6 @@ export default function Hero() {
           align-items: center;
           justify-content: center;
 
-          /* Reduced space below navbar */
           padding: 45px 7% 70px;
 
           background:
@@ -311,6 +345,8 @@ export default function Hero() {
           filter: blur(100px);
 
           border-radius: 50%;
+
+          pointer-events: none;
         }
 
         /* ================================
@@ -342,6 +378,12 @@ export default function Hero() {
           transition:
             transform 0.4s ease,
             box-shadow 0.4s ease;
+        }
+
+        .codeWindow.typing {
+          box-shadow:
+            0 30px 70px rgba(0, 0, 0, 0.5),
+            0 0 55px rgba(133, 76, 230, 0.24);
         }
 
         .codeWindow:hover {
@@ -434,6 +476,60 @@ export default function Hero() {
           white-space: pre;
         }
 
+        .codeLine {
+          display: block;
+
+          min-height: 1.85em;
+
+          overflow: hidden;
+
+          white-space: pre;
+
+          animation:
+            codeLineReveal
+            0.28s
+            cubic-bezier(0.16, 1, 0.3, 1)
+            both;
+        }
+
+        @keyframes codeLineReveal {
+          from {
+            opacity: 0;
+            clip-path: inset(0 100% 0 0);
+            transform: translateX(-4px);
+          }
+          to {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+            transform: translateX(0);
+          }
+        }
+
+        .typingCursor {
+          display: inline-block;
+
+          width: 8px;
+
+          margin-left: 3px;
+
+          color: #a875ff;
+
+          font-size: 13px;
+
+          line-height: 1;
+
+          vertical-align: middle;
+
+          animation: cursorBlink 0.8s steps(1) infinite;
+
+          text-shadow: 0 0 8px rgba(168, 117, 255, 0.9);
+        }
+
+        @keyframes cursorBlink {
+          0%, 45% { opacity: 1; }
+          46%, 100% { opacity: 0; }
+        }
+
         .keyword {
           color: #ff79c6;
         }
@@ -479,6 +575,13 @@ export default function Hero() {
 
           .left {
             text-align: center;
+          }
+
+          .title {
+            max-width: 800px;
+
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .subtitle {
@@ -568,7 +671,16 @@ export default function Hero() {
           }
 
           .icons {
+            gap: 10px;
+
             margin-top: 21px;
+          }
+
+          .icons a {
+            width: 40px;
+            height: 40px;
+
+            font-size: 17px;
           }
 
           .buttons {
@@ -576,15 +688,28 @@ export default function Hero() {
 
             width: 100%;
 
+            gap: 10px;
+
             margin-top: 24px;
           }
 
           .btn {
             width: 100%;
+
+            min-width: 0;
+
+            padding: 13px 18px;
           }
 
           .right {
             width: 100%;
+          }
+
+          .right::before {
+            width: 260px;
+            height: 260px;
+
+            filter: blur(70px);
           }
 
           .codeWindow {
@@ -593,6 +718,10 @@ export default function Hero() {
             border-radius: 11px;
 
             transform: none;
+          }
+
+          .codeWindow:hover {
+            transform: translateY(-3px);
           }
 
           .topBar {
@@ -622,6 +751,16 @@ export default function Hero() {
 
             overflow-x: auto;
           }
+
+          .codeLine {
+            min-height: 1.7em;
+          }
+
+          .typingCursor {
+            width: 6px;
+
+            font-size: 9px;
+          }
         }
 
         /* ================================
@@ -635,8 +774,14 @@ export default function Hero() {
             padding-right: 12px;
           }
 
+          .heroContainer {
+            gap: 32px;
+          }
+
           .title {
             font-size: 2.3rem;
+
+            letter-spacing: -1.5px;
           }
 
           .role {
@@ -647,10 +792,57 @@ export default function Hero() {
             font-size: 13px;
           }
 
+          .tech {
+            padding: 5px 8px;
+
+            font-size: 10px;
+          }
+
+          .btn {
+            font-size: 12px;
+          }
+
           .code {
             padding: 15px;
 
             font-size: 8px;
+
+            line-height: 1.65;
+          }
+
+          .codeLine {
+            min-height: 1.65em;
+          }
+
+          .typingCursor {
+            font-size: 8px;
+          }
+        }
+
+        /* ================================
+           REDUCED MOTION
+        ================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+          .codeLine {
+            opacity: 1 !important;
+            clip-path: inset(0 0 0 0) !important;
+            transform: none !important;
+            animation: none !important;
+          }
+
+          .typingCursor {
+            animation: none !important;
+            opacity: 1;
+          }
+
+          .codeWindow,
+          .codeWindow:hover,
+          .tech,
+          .icons a,
+          .btn {
+            transition: none !important;
           }
         }
       `}</style>
@@ -735,7 +927,7 @@ export default function Hero() {
 
           <div className="right">
 
-            <div className="codeWindow">
+            <div className={`codeWindow ${isTyping ? "typing" : ""}`}>
 
               <div className="topBar">
 
@@ -750,117 +942,199 @@ export default function Hero() {
               </div>
 
               <pre className="code">
-                <span className="keyword">const</span>{" "}
-                <span className="property">developer</span> = {"{"}
-                {"\n"}
 
-                {"  "}
-                <span className="property">name</span>:{" "}
-                <span className="string">
-                  "Fatima Khan"
-                </span>,
-                {"\n"}
+                {visibleLines >= 1 && (
+                  <span className="codeLine">
+                    <span className="keyword">const</span>{" "}
+                    <span className="property">developer</span> = {"{"}
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">role</span>:{" "}
-                <span className="string">
-                  "Full-Stack Developer"
-                </span>,
-                {"\n\n"}
+                {visibleLines >= 2 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">name</span>:{" "}
+                    <span className="string">"Fatima Khan"</span>,
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">frontend</span>: [
-                {"\n"}
+                {visibleLines >= 3 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">role</span>:{" "}
+                    <span className="string">"Full-Stack Developer"</span>,
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"Next.js"</span>,
-                {"\n"}
+                {visibleLines >= 4 && (
+                  <span className="codeLine"> </span>
+                )}
 
-                {"    "}
-                <span className="string">"React"</span>,
-                {"\n"}
+                {visibleLines >= 5 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">frontend</span>: [
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"TypeScript"</span>,
-                {"\n"}
+                {visibleLines >= 6 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"Next.js"</span>,
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"Tailwind CSS"</span>
-                {"\n"}
+                {visibleLines >= 7 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"React"</span>,
+                  </span>
+                )}
 
-                {"  "}],
-                {"\n\n"}
+                {visibleLines >= 8 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"TypeScript"</span>,
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">backend</span>: [
-                {"\n"}
+                {visibleLines >= 9 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"Tailwind CSS"</span>
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"FastAPI"</span>,
-                {"\n"}
+                {visibleLines >= 10 && (
+                  <span className="codeLine">{"  "}],</span>
+                )}
 
-                {"    "}
-                <span className="string">"Python"</span>,
-                {"\n"}
+                {visibleLines >= 11 && (
+                  <span className="codeLine"> </span>
+                )}
 
-                {"    "}
-                <span className="string">"PostgreSQL"</span>
-                {"\n"}
+                {visibleLines >= 12 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">backend</span>: [
+                  </span>
+                )}
 
-                {"  "}],
-                {"\n\n"}
+                {visibleLines >= 13 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"FastAPI"</span>,
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">ai</span>: [
-                {"\n"}
+                {visibleLines >= 14 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"Python"</span>,
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"RAG"</span>,
-                {"\n"}
+                {visibleLines >= 15 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"PostgreSQL"</span>
+                  </span>
+                )}
 
-                {"    "}
-                <span className="string">"Embeddings"</span>,
-                {"\n"}
+                {visibleLines >= 16 && (
+                  <span className="codeLine">{"  "}],</span>
+                )}
 
-                {"    "}
-                <span className="string">"Google Gemini"</span>
-                {"\n"}
+                {visibleLines >= 17 && (
+                  <span className="codeLine"> </span>
+                )}
 
-                {"  "}],
-                {"\n\n"}
+                {visibleLines >= 18 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">ai</span>: [
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">
-                  problemSolver
-                </span>:{" "}
-                <span className="boolean">true</span>,
-                {"\n"}
+                {visibleLines >= 19 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"RAG"</span>,
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">
-                  quickLearner
-                </span>:{" "}
-                <span className="boolean">true</span>,
-                {"\n\n"}
+                {visibleLines >= 20 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"Embeddings"</span>,
+                  </span>
+                )}
 
-                {"  "}
-                <span className="property">
-                  hireable
-                </span>:{" "}
-                <span className="keyword">function</span>
-                () {"{"}
-                {"\n"}
+                {visibleLines >= 21 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="string">"Google Gemini"</span>
+                  </span>
+                )}
 
-                {"    "}
-                <span className="keyword">return</span>{" "}
-                <span className="boolean">true</span>;
-                {"\n"}
+                {visibleLines >= 22 && (
+                  <span className="codeLine">{"  "}],</span>
+                )}
 
-                {"  "}
-                {"}"}
-                {"\n"}
+                {visibleLines >= 23 && (
+                  <span className="codeLine"> </span>
+                )}
 
-                {"}"};
+                {visibleLines >= 24 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">problemSolver</span>:{" "}
+                    <span className="boolean">true</span>,
+                  </span>
+                )}
+
+                {visibleLines >= 25 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">quickLearner</span>:{" "}
+                    <span className="boolean">true</span>,
+                  </span>
+                )}
+
+                {visibleLines >= 26 && (
+                  <span className="codeLine"> </span>
+                )}
+
+                {visibleLines >= 27 && (
+                  <span className="codeLine">
+                    {"  "}
+                    <span className="property">hireable</span>:{" "}
+                    <span className="keyword">function</span>() {"{"}
+                  </span>
+                )}
+
+                {visibleLines >= 28 && (
+                  <span className="codeLine">
+                    {"    "}
+                    <span className="keyword">return</span>{" "}
+                    <span className="boolean">true</span>;
+                  </span>
+                )}
+
+                {visibleLines >= 29 && (
+                  <span className="codeLine">{"  "}{"}"}</span>
+                )}
+
+                {visibleLines >= 30 && (
+                  <span className="codeLine">{"}"};</span>
+                )}
+
+                {visibleLines >= 31 && (
+                  <span className="codeLine">
+                    <span className="typingCursor">▋</span>
+                  </span>
+                )}
+
               </pre>
 
             </div>
@@ -872,4 +1146,3 @@ export default function Hero() {
     </>
   );
 }
-

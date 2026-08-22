@@ -488,12 +488,12 @@ export default function Footer() {
             <div className="footerBrand">
 
               <div className="footerLogo">
-                FK
+                EF
               </div>
 
               <div>
                 <p className="footerName">
-                  Fatima Khan
+                  Eman Fatima
                 </p>
 
                 <p className="footerRole">

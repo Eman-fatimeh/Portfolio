@@ -1,11 +1,7 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  BsGithub,
-  BsPlayCircleFill,
-} from "react-icons/bs";
+import { BsGithub, BsPlayCircleFill } from "react-icons/bs";
 
 export default function Projects() {
   const [visible, setVisible] = useState(false);
@@ -35,16 +31,11 @@ export default function Projects() {
   const projects = [
     {
       number: "01",
-
       title: "VaultMind AI",
-
       category: "AI-Powered Knowledge Base",
-
       description:
         "A full-stack RAG application that allows users to upload documents and ask natural-language questions about their own content. It combines document processing, semantic search and AI-powered chat.",
-
       image: "/vaultmind.jpeg",
-
       technologies: [
         "Next.js",
         "React",
@@ -56,28 +47,17 @@ export default function Projects() {
         "JWT",
         "Google Gemini",
       ],
-
-      github:
-        "https://github.com/Eman-fatimeh/VaultMind",
-
-      demo:
-        "https://vaultmind-demo.vercel.app",
-
+      github: "https://github.com/Eman-fatimeh/VaultMind",
+      demo: "https://vaultmind-demo.vercel.app",
       demoLabel: "Demo Video",
     },
-
     {
       number: "02",
-
       title: "Smart OPD",
-
       category: "Healthcare Management System",
-
       description:
         "A web-based Out-Patient Department management system designed to automate patient registration, token and queue management, doctor scheduling and appointment tracking.",
-
       image: "/careflow.jpeg",
-
       technologies: [
         "HTML",
         "CSS",
@@ -86,13 +66,8 @@ export default function Projects() {
         "FastAPI",
         "SQLite",
       ],
-
-      github:
-        "https://github.com/Eman-fatimeh/SMART-OPD-Project",
-
-      demo:
-        "https://www.linkedin.com/posts/eman-fatima16_webdevelopment-python-fastapi-activity-7477048782271102976-b2PJ",
-
+      github: "https://github.com/Eman-fatimeh/SMART-OPD-Project",
+      demo: "https://www.linkedin.com/posts/eman-fatima16_webdevelopment-python-fastapi-activity-7477048782271102976-b2PJ",
       demoLabel: "Demo Video",
     },
   ];
@@ -106,8 +81,10 @@ export default function Projects() {
 
         .projectsSection {
           position: relative;
+          width: 100%;
+          box-sizing: border-box;
 
-          padding: 120px 7%;
+          padding: clamp(75px, 10vw, 120px) 5%;
 
           background:
             radial-gradient(
@@ -123,18 +100,22 @@ export default function Projects() {
             #0a0a0f;
 
           color: white;
-
           overflow: hidden;
         }
 
+        /* =====================================
+           MAIN CONTAINER
+        ====================================== */
+
         .projectsContainer {
+          position: relative;
+          z-index: 2;
+
+          width: 100%;
           max-width: 1100px;
 
           margin: 0 auto;
-
-          position: relative;
-
-          z-index: 2;
+          box-sizing: border-box;
         }
 
         /* =====================================
@@ -143,35 +124,27 @@ export default function Projects() {
 
         .projectsHeader {
           display: flex;
-
+          align-items: flex-end;
           justify-content: space-between;
 
-          align-items: flex-end;
+          width: 100%;
 
-          gap: 40px;
+          gap: clamp(30px, 5vw, 60px);
 
-          margin-bottom: 65px;
+          margin: 0 auto clamp(45px, 6vw, 65px);
 
           opacity: 0;
-
           transform: translateY(35px);
         }
 
-        .projectsSection.isVisible
-        .projectsHeader {
-          animation:
-            projectsHeaderReveal
-            0.8s
-            ease
-            forwards;
+        .projectsSection.isVisible .projectsHeader {
+          animation: projectsHeaderReveal 0.8s ease forwards;
         }
 
         @keyframes projectsHeaderReveal {
           to {
             opacity: 1;
-
-            transform:
-              translateY(0);
+            transform: translateY(0);
           }
         }
 
@@ -181,25 +154,19 @@ export default function Projects() {
           color: #a875ff;
 
           font-size: 13px;
-
           font-weight: 700;
-
           letter-spacing: 3px;
         }
 
         .projectsTitle {
           margin: 0;
 
-          font-size:
-            clamp(
-              3rem,
-              6vw,
-              5rem
-            );
+          color: #ffffff;
 
+          font-size: clamp(3rem, 6vw, 5rem);
           line-height: 0.95;
 
-          letter-spacing: -4px;
+          letter-spacing: clamp(-2px, -0.4vw, -4px);
 
           font-weight: 800;
         }
@@ -209,6 +176,7 @@ export default function Projects() {
         }
 
         .projectsIntro {
+          width: 100%;
           max-width: 390px;
 
           margin: 0;
@@ -216,7 +184,6 @@ export default function Projects() {
           color: #9999a5;
 
           font-size: 14px;
-
           line-height: 1.8;
         }
 
@@ -225,12 +192,21 @@ export default function Projects() {
         ====================================== */
 
         .projectsGrid {
+          width: 100%;
+          max-width: 1050px;
+
+          margin: 0 auto;
+
           display: grid;
 
-          grid-template-columns:
-            repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
 
           gap: 28px;
+
+          justify-content: center;
+          align-items: stretch;
+
+          box-sizing: border-box;
         }
 
         /* =====================================
@@ -240,43 +216,32 @@ export default function Projects() {
         .projectCard {
           position: relative;
 
-          border:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.08
-              );
+          width: 100%;
+          max-width: 510px;
+
+          margin: 0 auto;
+
+          min-width: 0;
+
+          box-sizing: border-box;
+
+          border: 1px solid rgba(255, 255, 255, 0.08);
 
           border-radius: 20px;
 
-          background:
-            linear-gradient(
-              145deg,
-              rgba(
-                255,
-                255,
-                255,
-                0.04
-              ),
-              rgba(
-                255,
-                255,
-                255,
-                0.015
-              )
-            );
+          background: linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.04),
+            rgba(255, 255, 255, 0.015)
+          );
 
-          backdrop-filter:
-            blur(12px);
+          backdrop-filter: blur(12px);
 
           overflow: hidden;
 
           opacity: 0;
 
-          transform:
-            translateY(45px);
+          transform: translateY(45px);
 
           transition:
             transform 0.45s ease,
@@ -307,39 +272,18 @@ export default function Projects() {
         @keyframes projectReveal {
           to {
             opacity: 1;
-
-            transform:
-              translateY(0);
+            transform: translateY(0);
           }
         }
 
         .projectCard:hover {
-          transform:
-            translateY(-10px);
+          transform: translateY(-10px);
 
-          border-color:
-            rgba(
-              133,
-              76,
-              230,
-              0.4
-            );
+          border-color: rgba(133, 76, 230, 0.4);
 
           box-shadow:
-            0 25px 60px
-              rgba(
-                0,
-                0,
-                0,
-                0.35
-              ),
-            0 0 35px
-              rgba(
-                133,
-                76,
-                230,
-                0.10
-              );
+            0 25px 60px rgba(0, 0, 0, 0.35),
+            0 0 35px rgba(133, 76, 230, 0.10);
         }
 
         /* =====================================
@@ -351,34 +295,32 @@ export default function Projects() {
 
           width: 100%;
 
-          height: 230px;
+          height: clamp(200px, 22vw, 230px);
 
           overflow: hidden;
 
           background: #111118;
 
-          border-bottom:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.08
-              );
+          border-bottom: 1px solid
+            rgba(255, 255, 255, 0.08);
         }
 
         .projectImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+          display: block;
 
-  transition: transform 0.6s ease;
-}
+          width: 100%;
+          height: 100%;
 
-.projectCard:hover .projectImage img {
-  transform: scale(1.06);
-}
+          object-fit: cover;
+          object-position: center;
+
+          transition: transform 0.6s ease;
+        }
+
+        .projectCard:hover
+        .projectImage img {
+          transform: scale(1.06);
+        }
 
         /* =====================================
            PROJECT NUMBER BADGE
@@ -388,45 +330,27 @@ export default function Projects() {
           position: absolute;
 
           top: 18px;
-
           left: 18px;
 
           z-index: 3;
 
-          padding:
-            6px 9px;
+          padding: 6px 9px;
 
-          border:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.12
-              );
+          border: 1px solid
+            rgba(255, 255, 255, 0.12);
 
           border-radius: 7px;
 
           background:
-            rgba(
-              10,
-              10,
-              15,
-              0.65
-            );
+            rgba(10, 10, 15, 0.65);
 
-          backdrop-filter:
-            blur(8px);
+          backdrop-filter: blur(8px);
 
-          color:
-            #ffffff;
+          color: #ffffff;
 
-          font-family:
-            "Fira Code",
-            monospace;
+          font-family: "Fira Code", monospace;
 
           font-size: 10px;
-
           font-weight: 600;
         }
 
@@ -435,73 +359,63 @@ export default function Projects() {
         ====================================== */
 
         .projectContent {
-          padding: 30px;
+          width: 100%;
+          box-sizing: border-box;
+
+          padding: clamp(22px, 3vw, 30px);
         }
 
         .projectCategory {
           display: inline-block;
 
+          max-width: 100%;
+
           margin-bottom: 13px;
 
-          padding:
-            5px 9px;
+          padding: 5px 9px;
 
-          border:
-            1px solid
-              rgba(
-                133,
-                76,
-                230,
-                0.2
-              );
+          border: 1px solid
+            rgba(133, 76, 230, 0.2);
 
           border-radius: 20px;
 
           background:
-            rgba(
-              133,
-              76,
-              230,
-              0.05
-            );
+            rgba(133, 76, 230, 0.05);
 
-          color:
-            #a875ff;
+          color: #a875ff;
 
           font-size: 9px;
-
           font-weight: 700;
 
           letter-spacing: 1px;
 
-          text-transform:
-            uppercase;
+          text-transform: uppercase;
         }
 
         .projectTitle {
-          margin:
-            0 0 14px;
+          margin: 0 0 14px;
 
-          color:
-            #ffffff;
+          color: #ffffff;
 
-          font-size: 26px;
+          font-size: clamp(22px, 2.5vw, 26px);
 
           font-weight: 750;
 
-          letter-spacing:
-            -0.5px;
+          letter-spacing: -0.5px;
+
+          overflow-wrap: anywhere;
         }
 
         .projectDescription {
           margin: 0;
 
-          color:
-            #8e8e99;
+          color: #8e8e99;
 
           font-size: 13px;
 
           line-height: 1.8;
+
+          overflow-wrap: anywhere;
         }
 
         /* =====================================
@@ -519,63 +433,37 @@ export default function Projects() {
         }
 
         .projectTech {
-          padding:
-            6px 10px;
+          max-width: 100%;
 
-          border:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.08
-              );
+          padding: 6px 10px;
+
+          border: 1px solid
+            rgba(255, 255, 255, 0.08);
 
           border-radius: 6px;
 
           background:
-            rgba(
-              255,
-              255,
-              255,
-              0.025
-            );
+            rgba(255, 255, 255, 0.025);
 
-          color:
-            #aaaab5;
+          color: #aaaab5;
 
-          font-family:
-            "Fira Code",
-            monospace;
+          font-family: "Fira Code", monospace;
 
           font-size: 9px;
 
-          transition:
-            0.25s ease;
+          transition: 0.25s ease;
         }
 
         .projectTech:hover {
-          color:
-            #ffffff;
+          color: #ffffff;
 
           border-color:
-            rgba(
-              133,
-              76,
-              230,
-              0.35
-            );
+            rgba(133, 76, 230, 0.35);
 
           background:
-            rgba(
-              133,
-              76,
-              230,
-              0.08
-            );
+            rgba(133, 76, 230, 0.08);
 
-          transform:
-            translateY(-2px);
+          transform: translateY(-2px);
         }
 
         /* =====================================
@@ -584,6 +472,8 @@ export default function Projects() {
 
         .projectButtons {
           display: flex;
+
+          flex-wrap: wrap;
 
           gap: 10px;
 
@@ -594,13 +484,15 @@ export default function Projects() {
           display: inline-flex;
 
           align-items: center;
-
           justify-content: center;
 
           gap: 8px;
 
-          padding:
-            10px 16px;
+          min-height: 40px;
+
+          padding: 10px 16px;
+
+          box-sizing: border-box;
 
           border-radius: 8px;
 
@@ -610,6 +502,8 @@ export default function Projects() {
 
           font-weight: 700;
 
+          white-space: nowrap;
+
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease,
@@ -617,60 +511,37 @@ export default function Projects() {
             border-color 0.25s ease;
         }
 
+        .projectButton svg {
+          flex-shrink: 0;
+
+          font-size: 15px;
+        }
+
         /* =====================================
            GITHUB BUTTON
         ====================================== */
 
         .githubButton {
-          border:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.15
-              );
+          border: 1px solid
+            rgba(255, 255, 255, 0.15);
 
           background:
-            rgba(
-              255,
-              255,
-              255,
-              0.04
-            );
+            rgba(255, 255, 255, 0.04);
 
-          color:
-            #ffffff;
+          color: #ffffff;
         }
 
         .githubButton:hover {
-          transform:
-            translateY(-3px);
+          transform: translateY(-3px);
 
           background:
-            rgba(
-              255,
-              255,
-              255,
-              0.09
-            );
+            rgba(255, 255, 255, 0.09);
 
           border-color:
-            rgba(
-              255,
-              255,
-              255,
-              0.3
-            );
+            rgba(255, 255, 255, 0.3);
 
           box-shadow:
-            0 8px 25px
-              rgba(
-                0,
-                0,
-                0,
-                0.25
-              );
+            0 8px 25px rgba(0, 0, 0, 0.25);
         }
 
         /* =====================================
@@ -687,17 +558,11 @@ export default function Projects() {
               #ff4ecd
             );
 
-          color:
-            #ffffff;
+          color: #ffffff;
 
           box-shadow:
             0 5px 20px
-              rgba(
-                133,
-                76,
-                230,
-                0.2
-              );
+            rgba(133, 76, 230, 0.2);
         }
 
         .demoButton:hover {
@@ -707,16 +572,7 @@ export default function Projects() {
 
           box-shadow:
             0 10px 30px
-              rgba(
-                133,
-                76,
-                230,
-                0.35
-              );
-        }
-
-        .projectButton svg {
-          font-size: 15px;
+            rgba(133, 76, 230, 0.35);
         }
 
         /* =====================================
@@ -724,28 +580,20 @@ export default function Projects() {
         ====================================== */
 
         .projectsFooter {
+          width: 100%;
+
           margin-top: 70px;
 
           padding-top: 25px;
 
-          border-top:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.06
-              );
+          border-top: 1px solid
+            rgba(255, 255, 255, 0.06);
 
-          text-align:
-            center;
+          text-align: center;
 
-          color:
-            #555560;
+          color: #555560;
 
-          font-family:
-            "Fira Code",
-            monospace;
+          font-family: "Fira Code", monospace;
 
           font-size: 10px;
 
@@ -774,20 +622,74 @@ export default function Projects() {
            TABLET
         ====================================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
+          .projectsSection {
+            padding-left: 5%;
+            padding-right: 5%;
+          }
 
           .projectsGrid {
-            grid-template-columns:
-              1fr;
+            width: 100%;
+
+            max-width: 650px;
+
+            grid-template-columns: 1fr;
+
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .projectCard {
-            max-width: 650px;
-
             width: 100%;
 
-            margin:
-              0 auto;
+            max-width: 650px;
+
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .projectImage {
+            height: clamp(
+              220px,
+              38vw,
+              300px
+            );
+          }
+        }
+
+        /* =====================================
+           MOBILE / TABLET
+        ====================================== */
+
+        @media (max-width: 700px) {
+          .projectsSection {
+            padding-top: 80px;
+            padding-bottom: 80px;
+          }
+
+          .projectsHeader {
+            display: block;
+
+            margin-bottom: 45px;
+          }
+
+          .projectsIntro {
+            max-width: 600px;
+
+            margin-top: 23px;
+          }
+
+          .projectsTitle {
+            font-size:
+              clamp(
+                2.8rem,
+                11vw,
+                4rem
+              );
+          }
+
+          .projectCard:hover {
+            transform: translateY(-5px);
           }
         }
 
@@ -795,66 +697,146 @@ export default function Projects() {
            MOBILE
         ====================================== */
 
-        @media (max-width: 800px) {
-
+        @media (max-width: 500px) {
           .projectsSection {
-            padding:
-              90px 6%;
+            padding: 70px 16px;
+          }
+
+          .projectsContainer {
+            width: 100%;
+            max-width: 100%;
           }
 
           .projectsHeader {
-            display: block;
-
-            margin-bottom: 50px;
+            width: 100%;
           }
 
-          .projectsIntro {
-            margin-top: 25px;
+          .projectsNumber {
+            margin-bottom: 12px;
 
-            max-width: 600px;
-          }
-        }
+            font-size: 11px;
 
-        /* =====================================
-           SMALL MOBILE
-        ====================================== */
-
-        @media (max-width: 500px) {
-
-          .projectsSection {
-            padding:
-              75px 20px;
+            letter-spacing: 2px;
           }
 
           .projectsTitle {
-            font-size:
-              3.2rem;
+            font-size: 3rem;
 
-            letter-spacing:
-              -2px;
+            letter-spacing: -2px;
+          }
+
+          .projectsIntro {
+            font-size: 13px;
+
+            line-height: 1.7;
+          }
+
+          .projectsGrid {
+            width: 100%;
+
+            max-width: 100%;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            gap: 20px;
+          }
+
+          .projectCard {
+            width: 100%;
+
+            max-width: 100%;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            border-radius: 16px;
           }
 
           .projectImage {
             height: 190px;
           }
 
+          .projectNumberBadge {
+            top: 12px;
+            left: 12px;
+          }
+
           .projectContent {
-            padding:
-              24px;
+            padding: 22px 18px;
+          }
+
+          .projectCategory {
+            font-size: 8px;
           }
 
           .projectTitle {
-            font-size:
-              22px;
+            font-size: 22px;
+          }
+
+          .projectDescription {
+            font-size: 12px;
+
+            line-height: 1.75;
+          }
+
+          .projectTechnologies {
+            gap: 6px;
+
+            margin-top: 20px;
+          }
+
+          .projectTech {
+            padding: 5px 8px;
+
+            font-size: 8px;
           }
 
           .projectButtons {
-            flex-direction:
-              column;
+            flex-direction: column;
+
+            width: 100%;
+
+            gap: 9px;
+
+            margin-top: 24px;
           }
 
           .projectButton {
             width: 100%;
+
+            min-height: 44px;
+          }
+        }
+
+        /* =====================================
+           VERY SMALL PHONES
+        ====================================== */
+
+        @media (max-width: 360px) {
+          .projectsSection {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+
+          .projectsTitle {
+            font-size: 2.65rem;
+          }
+
+          .projectImage {
+            height: 175px;
+          }
+
+          .projectContent {
+            padding: 20px 16px;
+          }
+
+          .projectTitle {
+            font-size: 21px;
+          }
+
+          .projectDescription {
+            font-size: 11.5px;
           }
         }
 
@@ -862,21 +844,13 @@ export default function Projects() {
            REDUCED MOTION
         ====================================== */
 
-        @media (
-          prefers-reduced-motion: reduce
-        ) {
-
+        @media (prefers-reduced-motion: reduce) {
           .projectsSection *,
           .projectsSection::before,
           .projectsSection::after {
-            animation-duration:
-              0.01ms !important;
-
-            animation-iteration-count:
-              1 !important;
-
-            transition-duration:
-              0.01ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>
@@ -889,50 +863,37 @@ export default function Projects() {
       >
         <div className="projectsContainer">
 
-          {/* =================================
-              HEADER
-          ================================= */}
+          {/* HEADER */}
 
           <div className="projectsHeader">
-
             <div>
-
               <div className="projectsNumber">
                 04 — PROJECTS
               </div>
 
               <h2 className="projectsTitle">
-                Selected{" "}
-                <span>work.</span>
+                Selected <span>work.</span>
               </h2>
-
             </div>
 
             <p className="projectsIntro">
-              A selection of projects I've built
-              while working with modern web
-              development, backend systems and
-              AI-powered technologies.
+              A selection of projects I've built while
+              working with modern web development, backend
+              systems and AI-powered technologies.
             </p>
-
           </div>
 
-          {/* =================================
-              PROJECT GRID
-          ================================= */}
+          {/* PROJECT GRID */}
 
           <div className="projectsGrid">
-
             {projects.map((project) => (
               <article
                 className="projectCard"
                 key={project.title}
               >
-
                 {/* IMAGE */}
 
                 <div className="projectImage">
-
                   <img
                     src={project.image}
                     alt={`${project.title} project screenshot`}
@@ -941,7 +902,6 @@ export default function Projects() {
                   <div className="projectNumberBadge">
                     {project.number}
                   </div>
-
                 </div>
 
                 {/* CONTENT */}
@@ -963,7 +923,6 @@ export default function Projects() {
                   {/* TECHNOLOGIES */}
 
                   <div className="projectTechnologies">
-
                     {project.technologies.map(
                       (technology) => (
                         <span
@@ -974,13 +933,11 @@ export default function Projects() {
                         </span>
                       )
                     )}
-
                   </div>
 
                   {/* BUTTONS */}
 
                   <div className="projectButtons">
-
                     <a
                       href={project.github}
                       target="_blank"
@@ -988,7 +945,6 @@ export default function Projects() {
                       className="projectButton githubButton"
                     >
                       <BsGithub />
-
                       GitHub
                     </a>
 
@@ -999,17 +955,13 @@ export default function Projects() {
                       className="projectButton demoButton"
                     >
                       <BsPlayCircleFill />
-
                       {project.demoLabel}
                     </a>
-
                   </div>
 
                 </div>
-
               </article>
             ))}
-
           </div>
 
           {/* FOOTER */}
@@ -1023,4 +975,3 @@ export default function Projects() {
     </>
   );
 }
-

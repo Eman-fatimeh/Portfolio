@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import {
   BsEnvelopeFill,
-  BsGithub,
-  BsLinkedin,
   BsArrowUpRight,
 } from "react-icons/bs";
 
@@ -43,7 +41,13 @@ export default function Contact() {
         .contactSection {
           position: relative;
 
-          padding: 120px 7% 80px;
+          width: 100%;
+          box-sizing: border-box;
+
+          padding:
+            clamp(80px, 10vw, 120px)
+            5%
+            clamp(70px, 8vw, 100px);
 
           background:
             radial-gradient(
@@ -63,14 +67,21 @@ export default function Contact() {
           overflow: hidden;
         }
 
+        /* =====================================
+           CONTAINER
+        ====================================== */
+
         .contactContainer {
+          position: relative;
+
+          z-index: 2;
+
+          width: 100%;
           max-width: 1000px;
 
           margin: 0 auto;
 
-          position: relative;
-
-          z-index: 2;
+          box-sizing: border-box;
         }
 
         /* =====================================
@@ -80,12 +91,10 @@ export default function Contact() {
         .contactGlow {
           position: absolute;
 
-          width: 350px;
-
-          height: 350px;
+          width: clamp(250px, 35vw, 350px);
+          height: clamp(250px, 35vw, 350px);
 
           left: 50%;
-
           top: 30%;
 
           transform:
@@ -100,8 +109,7 @@ export default function Contact() {
               #ff4ecd
             );
 
-          filter:
-            blur(130px);
+          filter: blur(130px);
 
           opacity: 0.08;
 
@@ -134,6 +142,8 @@ export default function Contact() {
         ====================================== */
 
         .contactHeader {
+          width: 100%;
+
           text-align: center;
 
           opacity: 0;
@@ -177,18 +187,27 @@ export default function Contact() {
         }
 
         .contactTitle {
+          width: 100%;
+
           margin: 0;
+
+          color: #ffffff;
 
           font-size:
             clamp(
-              3rem,
+              2.8rem,
               7vw,
               5.5rem
             );
 
           line-height: 0.95;
 
-          letter-spacing: -4px;
+          letter-spacing:
+            clamp(
+              -2px,
+              -0.4vw,
+              -4px
+            );
 
           font-weight: 800;
         }
@@ -203,17 +222,14 @@ export default function Contact() {
               #ff4ecd
             );
 
-          -webkit-background-clip:
-            text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
 
-          -webkit-text-fill-color:
-            transparent;
-
-          background-clip:
-            text;
+          background-clip: text;
         }
 
         .contactDescription {
+          width: 100%;
           max-width: 580px;
 
           margin:
@@ -221,7 +237,8 @@ export default function Contact() {
 
           color: #8f8f9b;
 
-          font-size: 14px;
+          font-size:
+            clamp(12px, 1.5vw, 14px);
 
           line-height: 1.8;
         }
@@ -231,12 +248,15 @@ export default function Contact() {
         ====================================== */
 
         .contactEmailCard {
+          width: 100%;
           max-width: 620px;
 
           margin:
-            50px auto 0;
+            clamp(35px, 5vw, 50px)
+            auto 0;
 
-          padding: 28px;
+          padding:
+            clamp(20px, 3vw, 28px);
 
           display: flex;
 
@@ -246,14 +266,16 @@ export default function Contact() {
 
           gap: 25px;
 
+          box-sizing: border-box;
+
           border:
             1px solid
-              rgba(
-                133,
-                76,
-                230,
-                0.22
-              );
+            rgba(
+              133,
+              76,
+              230,
+              0.22
+            );
 
           border-radius: 18px;
 
@@ -279,12 +301,12 @@ export default function Contact() {
 
           box-shadow:
             0 20px 60px
-              rgba(
-                0,
-                0,
-                0,
-                0.25
-              );
+            rgba(
+              0,
+              0,
+              0,
+              0.25
+            );
 
           opacity: 0;
 
@@ -292,7 +314,9 @@ export default function Contact() {
             translateY(35px);
 
           transition:
-            0.4s ease;
+            transform 0.4s ease,
+            border-color 0.4s ease,
+            box-shadow 0.4s ease;
         }
 
         .contactSection.visible
@@ -343,6 +367,10 @@ export default function Contact() {
               );
         }
 
+        /* =====================================
+           EMAIL INFO
+        ====================================== */
+
         .emailInfo {
           display: flex;
 
@@ -351,11 +379,12 @@ export default function Contact() {
           gap: 17px;
 
           min-width: 0;
+
+          flex: 1;
         }
 
         .emailIcon {
           width: 50px;
-
           height: 50px;
 
           flex-shrink: 0;
@@ -363,7 +392,6 @@ export default function Contact() {
           display: flex;
 
           align-items: center;
-
           justify-content: center;
 
           border-radius: 13px;
@@ -387,12 +415,12 @@ export default function Contact() {
 
           border:
             1px solid
-              rgba(
-                133,
-                76,
-                230,
-                0.25
-              );
+            rgba(
+              133,
+              76,
+              230,
+              0.25
+            );
 
           color:
             #b47dff;
@@ -401,7 +429,8 @@ export default function Contact() {
         }
 
         .emailLabel {
-          margin: 0 0 5px;
+          margin:
+            0 0 5px;
 
           color:
             #777783;
@@ -423,12 +452,14 @@ export default function Contact() {
 
           color: white;
 
-          font-size: 14px;
+          font-size:
+            clamp(12px, 1.5vw, 14px);
 
           font-weight: 600;
 
-          word-break:
-            break-word;
+          word-break: break-word;
+
+          overflow-wrap: anywhere;
         }
 
         /* =====================================
@@ -446,8 +477,12 @@ export default function Contact() {
 
           flex-shrink: 0;
 
+          min-height: 42px;
+
           padding:
             11px 17px;
+
+          box-sizing: border-box;
 
           border-radius: 9px;
 
@@ -466,17 +501,20 @@ export default function Contact() {
 
           font-weight: 700;
 
+          white-space: nowrap;
+
           box-shadow:
             0 7px 20px
-              rgba(
-                133,
-                76,
-                230,
-                0.2
-              );
+            rgba(
+              133,
+              76,
+              230,
+              0.2
+            );
 
           transition:
-            0.3s ease;
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
         }
 
         .emailButton:hover {
@@ -486,278 +524,178 @@ export default function Contact() {
 
           box-shadow:
             0 10px 30px
-              rgba(
-                133,
-                76,
-                230,
-                0.4
-              );
-        }
-
-        .emailButton svg {
-          font-size: 13px;
-        }
-
-        /* =====================================
-           SOCIAL LINKS
-        ====================================== */
-
-        .socialSection {
-          margin-top: 55px;
-
-          text-align: center;
-
-          opacity: 0;
-        }
-
-        .contactSection.visible
-        .socialSection {
-          animation:
-            socialReveal
-            0.8s
-            ease
-            0.5s
-            forwards;
-        }
-
-        @keyframes socialReveal {
-          to {
-            opacity: 1;
-          }
-        }
-
-        .socialText {
-          margin:
-            0 0 18px;
-
-          color:
-            #666673;
-
-          font-family:
-            "Fira Code",
-            monospace;
-
-          font-size: 10px;
-
-          letter-spacing: 1.5px;
-        }
-
-        .socialLinks {
-          display: flex;
-
-          justify-content: center;
-
-          gap: 12px;
-        }
-
-        .socialLink {
-          width: 43px;
-
-          height: 43px;
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          border:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.09
-              );
-
-          border-radius: 10px;
-
-          background:
-            rgba(
-              255,
-              255,
-              255,
-              0.025
-            );
-
-          color:
-            #8e8e99;
-
-          text-decoration: none;
-
-          font-size: 17px;
-
-          transition:
-            transform 0.3s ease,
-            color 0.3s ease,
-            border-color 0.3s ease,
-            background 0.3s ease;
-        }
-
-        .socialLink:hover {
-          transform:
-            translateY(-5px);
-
-          color:
-            #ffffff;
-
-          border-color:
             rgba(
               133,
               76,
               230,
               0.4
             );
+        }
 
-          background:
-            rgba(
-              133,
-              76,
-              230,
-              0.1
-            );
+        .emailButton svg {
+          flex-shrink: 0;
 
-          box-shadow:
-            0 8px 25px
-              rgba(
-                133,
-                76,
-                230,
-                0.15
-              );
+          font-size: 13px;
         }
 
         /* =====================================
-           FOOTER
+           TABLET
         ====================================== */
 
-        .contactFooter {
-          margin-top: 80px;
-
-          padding-top: 25px;
-
-          border-top:
-            1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.06
-              );
-
-          display: flex;
-
-          justify-content:
-            space-between;
-
-          align-items: center;
-
-          color:
-            #555560;
-
-          font-family:
-            "Fira Code",
-            monospace;
-
-          font-size: 9px;
-
-          letter-spacing: 1px;
-
-          opacity: 0;
-        }
-
-        .contactSection.visible
-        .contactFooter {
-          animation:
-            footerReveal
-            0.8s
-            ease
-            0.8s
-            forwards;
-        }
-
-        @keyframes footerReveal {
-          to {
-            opacity: 1;
+        @media (max-width: 800px) {
+          .contactSection {
+            padding-left: 5%;
+            padding-right: 5%;
           }
-        }
 
-        .footerArrow {
-          display: inline-flex;
-
-          align-items: center;
-
-          gap: 6px;
-
-          color:
-            #777783;
-
-          text-decoration:
-            none;
-
-          transition:
-            color 0.3s ease;
-        }
-
-        .footerArrow:hover {
-          color:
-            #a875ff;
+          .contactEmailCard {
+            max-width: 650px;
+          }
         }
 
         /* =====================================
            MOBILE
         ====================================== */
 
-        @media (max-width: 650px) {
-
+        @media (max-width: 600px) {
           .contactSection {
             padding:
-              90px 20px 50px;
+              80px
+              20px
+              70px;
           }
 
           .contactTitle {
             font-size:
-              3.3rem;
+              clamp(
+                2.8rem,
+                12vw,
+                3.8rem
+              );
 
             letter-spacing:
               -2px;
           }
 
-          .contactEmailCard {
-            flex-direction:
-              column;
+          .contactDescription {
+            margin-top: 22px;
 
-            align-items:
-              stretch;
+            font-size: 13px;
+
+            line-height: 1.75;
+          }
+
+          .contactEmailCard {
+            flex-direction: column;
+
+            align-items: stretch;
+
+            gap: 20px;
 
             padding: 22px;
+
+            border-radius: 16px;
+          }
+
+          .emailInfo {
+            width: 100%;
+          }
+
+          .emailIcon {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 11px;
+
+            font-size: 17px;
           }
 
           .emailButton {
             width: 100%;
-          }
 
-          .contactFooter {
-            flex-direction:
-              column;
-
-            gap: 15px;
-
-            text-align:
-              center;
+            min-height: 44px;
           }
         }
 
+        /* =====================================
+           SMALL MOBILE
+        ====================================== */
+
         @media (max-width: 400px) {
+          .contactSection {
+            padding:
+              70px
+              16px
+              60px;
+          }
+
+          .contactLabel {
+            font-size: 10px;
+
+            letter-spacing: 2px;
+          }
 
           .contactTitle {
-            font-size:
-              2.8rem;
+            font-size: 2.7rem;
+
+            letter-spacing:
+              -1.5px;
+          }
+
+          .contactDescription {
+            font-size: 12px;
+          }
+
+          .contactEmailCard {
+            padding: 18px;
+
+            gap: 18px;
+          }
+
+          .emailInfo {
+            gap: 12px;
+          }
+
+          .emailIcon {
+            width: 43px;
+            height: 43px;
+
+            font-size: 16px;
+          }
+
+          .emailLabel {
+            font-size: 8px;
           }
 
           .emailAddress {
-            font-size:
-              12px;
+            font-size: 11px;
+          }
+
+          .emailButton {
+            font-size: 10px;
+          }
+        }
+
+        /* =====================================
+           VERY SMALL PHONES
+        ====================================== */
+
+        @media (max-width: 340px) {
+          .contactSection {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+
+          .contactTitle {
+            font-size: 2.45rem;
+          }
+
+          .contactEmailCard {
+            padding: 16px;
+          }
+
+          .emailAddress {
+            font-size: 10.5px;
           }
         }
 
@@ -765,10 +703,7 @@ export default function Contact() {
            REDUCED MOTION
         ====================================== */
 
-        @media (
-          prefers-reduced-motion: reduce
-        ) {
-
+        @media (prefers-reduced-motion: reduce) {
           .contactSection *,
           .contactSection::before,
           .contactSection::after {
@@ -790,17 +725,15 @@ export default function Contact() {
           visible ? "visible" : ""
         }`}
       >
-
         {/* Background glow */}
 
-        <div className="contactGlow"></div>
+        <div className="contactGlow" />
 
         <div className="contactContainer">
 
           {/* HEADER */}
 
           <div className="contactHeader">
-
             <div className="contactLabel">
               06 — CONTACT
             </div>
@@ -816,10 +749,9 @@ export default function Contact() {
               reach out. I'm always open to discussing
               interesting ideas and opportunities.
             </p>
-
           </div>
 
-          {/* EMAIL */}
+          {/* EMAIL CARD */}
 
           <div className="contactEmailCard">
 
@@ -830,7 +762,6 @@ export default function Contact() {
               </div>
 
               <div>
-
                 <p className="emailLabel">
                   Email me
                 </p>
@@ -838,7 +769,6 @@ export default function Contact() {
                 <p className="emailAddress">
                   emaankhan63421@gmail.com
                 </p>
-
               </div>
 
             </div>
@@ -848,17 +778,12 @@ export default function Contact() {
               className="emailButton"
             >
               Get in touch
-
               <BsArrowUpRight />
             </a>
 
           </div>
 
-          
-          </div>
-
-    
-
+        </div>
       </section>
     </>
   );
