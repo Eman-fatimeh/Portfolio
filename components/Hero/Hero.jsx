@@ -619,7 +619,7 @@ export default function Hero() {
 
           .hero {
             padding:
-              30px
+              70px
               16px
               45px;
           }
