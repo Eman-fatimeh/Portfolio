@@ -404,7 +404,7 @@ export default function Hero() {
                     </span>
                     :{" "}
                     <span className="string">
-                      "Amna"
+                      "Eman Fatima"
                     </span>
                     ,
                   </span>
