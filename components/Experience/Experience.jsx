@@ -34,18 +34,13 @@ export default function Experience() {
       company: "Freelance",
       description:
         "Working on modern web applications and client-focused digital solutions, with a focus on responsive interfaces, full-stack development and clean user experiences.",
-      technologies: [
-        "Next.js",
-        "React",
-        "JavaScript",
-        "Tailwind CSS",
-      ],
+      technologies: ["Next.js", "React", "JavaScript", "Tailwind CSS"],
       current: true,
     },
 
     {
       year: "March 2026 — May 2026",
-      title: "Frontend developer",
+      title: "Frontend Developer",
       company: "M1",
       description:
         "Gained practical development experience while working with modern web technologies and applying software development concepts in a professional environment.",
@@ -59,17 +54,22 @@ export default function Experience() {
     },
 
     {
+      year: "Jan 2026 — March 2026",
+      title: "Frontend Developer",
+      company: "U Devs",
+      description:
+        "Develop dynamic, responsive user interfaces using React, JavaScript and CSS frameworks.",
+      technologies: ["React", "JavaScript", "CSS", "HTML"],
+      current: false,
+    },
+
+    {
       year: "2023 — 2026",
       title: "Student Developer",
       company: "Academic & Personal Projects",
       description:
         "Built academic and personal projects while developing skills in frontend development, backend development, databases, APIs and modern software engineering practices.",
-      technologies: [
-        "React",
-        "Next.js",
-        "Python",
-        "SQL",
-      ],
+      technologies: ["React", "Next.js", "Python", "SQL"],
       current: false,
     },
   ];
@@ -83,9 +83,7 @@ export default function Experience() {
 
         .experienceSection {
           position: relative;
-
           padding: 120px 7%;
-
           background:
             radial-gradient(
               circle at 85% 20%,
@@ -98,19 +96,14 @@ export default function Experience() {
               transparent 28%
             ),
             #0a0a0f;
-
           color: white;
-
           overflow: hidden;
         }
 
         .experienceContainer {
           position: relative;
-
           max-width: 1100px;
-
           margin: 0 auto;
-
           z-index: 2;
         }
 
@@ -120,22 +113,16 @@ export default function Experience() {
 
         .experienceHeader {
           display: flex;
-
           justify-content: space-between;
-
           align-items: flex-end;
-
           gap: 40px;
-
           margin-bottom: 80px;
 
           opacity: 0;
-
           transform: translateY(35px);
         }
 
-        .experienceSection.isVisible
-        .experienceHeader {
+        .experienceSection.isVisible .experienceHeader {
           animation:
             experienceHeaderReveal
             0.8s
@@ -152,30 +139,17 @@ export default function Experience() {
 
         .experienceNumber {
           margin-bottom: 14px;
-
           color: #a875ff;
-
           font-size: 13px;
-
           font-weight: 700;
-
           letter-spacing: 3px;
         }
 
         .experienceTitle {
           margin: 0;
-
-          font-size:
-            clamp(
-              3rem,
-              6vw,
-              5rem
-            );
-
+          font-size: clamp(3rem, 6vw, 5rem);
           line-height: 0.95;
-
           letter-spacing: -4px;
-
           font-weight: 800;
         }
 
@@ -185,13 +159,9 @@ export default function Experience() {
 
         .experienceIntro {
           max-width: 380px;
-
           margin: 0;
-
           color: #9999a5;
-
           font-size: 14px;
-
           line-height: 1.8;
         }
 
@@ -201,13 +171,8 @@ export default function Experience() {
 
         .experienceTimeline {
           position: relative;
-
           padding: 5px 0 20px;
         }
-
-        /*
-          Continuous center timeline
-        */
 
         .experienceTimeline::before {
           content: "";
@@ -215,9 +180,7 @@ export default function Experience() {
           position: absolute;
 
           top: 0;
-
           bottom: 0;
-
           left: 50%;
 
           width: 2px;
@@ -232,48 +195,23 @@ export default function Experience() {
             linear-gradient(
               to bottom,
               transparent 0%,
-              rgba(
-                133,
-                76,
-                230,
-                0.85
-              ) 8%,
-              rgba(
-                133,
-                76,
-                230,
-                0.65
-              ) 45%,
-              rgba(
-                255,
-                78,
-                205,
-                0.55
-              ) 85%,
+              rgba(133, 76, 230, 0.85) 8%,
+              rgba(133, 76, 230, 0.65) 45%,
+              rgba(255, 78, 205, 0.55) 85%,
               transparent 100%
             );
 
           box-shadow:
             0 0 10px
-              rgba(
-                133,
-                76,
-                230,
-                0.18
-              );
+            rgba(133, 76, 230, 0.18);
         }
 
         .experienceSection.isVisible
         .experienceTimeline::before {
           animation:
             timelineGrow
-            1.6s
-            cubic-bezier(
-              0.22,
-              1,
-              0.36,
-              1
-            )
+            1.8s
+            cubic-bezier(0.22, 1, 0.36, 1)
             0.25s
             forwards;
         }
@@ -313,42 +251,25 @@ export default function Experience() {
           margin-bottom: 0;
         }
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(1) {
-          animation:
-            experienceReveal
-            0.8s
-            ease
-            0.45s
-            forwards;
-        }
+        /*
+          Every item now uses the same animation.
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(2) {
-          animation:
-            experienceReveal
-            0.8s
-            ease
-            0.7s
-            forwards;
-        }
+          The delay is controlled from React:
+          0.45s, 0.70s, 0.95s, 1.20s...
+        */
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(3) {
+        .experienceSection.isVisible .experienceItem {
           animation:
             experienceReveal
             0.8s
             ease
-            0.95s
             forwards;
         }
 
         @keyframes experienceReveal {
           to {
             opacity: 1;
-
-            transform:
-              translateY(0);
+            transform: translateY(0);
           }
         }
 
@@ -372,7 +293,6 @@ export default function Experience() {
           position: relative;
 
           width: 15px;
-
           height: 15px;
 
           margin-top: 26px;
@@ -391,55 +311,26 @@ export default function Experience() {
 
           box-shadow:
             0 0 0 4px
-              rgba(
-                133,
-                76,
-                230,
-                0.12
-              ),
+              rgba(133, 76, 230, 0.12),
             0 0 22px
-              rgba(
-                133,
-                76,
-                230,
-                0.7
-              );
+              rgba(133, 76, 230, 0.7);
 
           z-index: 5;
 
           transform: scale(0);
         }
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(1)
-        .timelineDot {
-          animation:
-            dotAppear
-            0.5s
-            ease
-            0.7s
-            forwards;
-        }
+        /*
+          Every dot animates automatically.
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(2)
-        .timelineDot {
-          animation:
-            dotAppear
-            0.5s
-            ease
-            0.95s
-            forwards;
-        }
+          React provides the delay.
+        */
 
-        .experienceSection.isVisible
-        .experienceItem:nth-child(3)
-        .timelineDot {
+        .experienceSection.isVisible .timelineDot {
           animation:
             dotAppear
             0.5s
             ease
-            1.2s
             forwards;
         }
 
@@ -485,24 +376,18 @@ export default function Experience() {
           ODD ITEMS
           Date LEFT
           Card RIGHT
-
-          1 = Freelance
-          3 = Student Developer
         */
 
         .experienceItem:nth-child(odd)
         .experienceDate {
           grid-column: 1;
-
           grid-row: 1;
-
           text-align: right;
         }
 
         .experienceItem:nth-child(odd)
         .experienceCard {
           grid-column: 3;
-
           grid-row: 1;
         }
 
@@ -510,23 +395,18 @@ export default function Experience() {
           EVEN ITEMS
           Card LEFT
           Date RIGHT
-
-          2 = M1 Experience
         */
 
         .experienceItem:nth-child(even)
         .experienceDate {
           grid-column: 3;
-
           grid-row: 1;
-
           text-align: left;
         }
 
         .experienceItem:nth-child(even)
         .experienceCard {
           grid-column: 1;
-
           grid-row: 1;
         }
 
@@ -541,30 +421,15 @@ export default function Experience() {
 
           border:
             1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.08
-              );
+            rgba(255, 255, 255, 0.08);
 
           border-radius: 16px;
 
           background:
             linear-gradient(
               145deg,
-              rgba(
-                255,
-                255,
-                255,
-                0.035
-              ),
-              rgba(
-                255,
-                255,
-                255,
-                0.015
-              )
+              rgba(255, 255, 255, 0.035),
+              rgba(255, 255, 255, 0.015)
             );
 
           backdrop-filter: blur(10px);
@@ -582,45 +447,20 @@ export default function Experience() {
           transform: translateY(-8px);
 
           border-color:
-            rgba(
-              133,
-              76,
-              230,
-              0.4
-            );
+            rgba(133, 76, 230, 0.4);
 
           background:
             linear-gradient(
               145deg,
-              rgba(
-                133,
-                76,
-                230,
-                0.07
-              ),
-              rgba(
-                255,
-                78,
-                205,
-                0.025
-              )
+              rgba(133, 76, 230, 0.07),
+              rgba(255, 78, 205, 0.025)
             );
 
           box-shadow:
             0 25px 60px
-              rgba(
-                0,
-                0,
-                0,
-                0.3
-              ),
+              rgba(0, 0, 0, 0.3),
             0 0 30px
-              rgba(
-                133,
-                76,
-                230,
-                0.08
-              );
+              rgba(133, 76, 230, 0.08);
         }
 
         /* =====================================
@@ -633,11 +473,9 @@ export default function Experience() {
           position: absolute;
 
           width: 120px;
-
           height: 120px;
 
           top: -60px;
-
           right: -60px;
 
           border-radius: 50%;
@@ -674,21 +512,11 @@ export default function Experience() {
           border-radius: 20px;
 
           background:
-            rgba(
-              39,
-              201,
-              63,
-              0.07
-            );
+            rgba(39, 201, 63, 0.07);
 
           border:
             1px solid
-              rgba(
-                39,
-                201,
-                63,
-                0.18
-              );
+            rgba(39, 201, 63, 0.18);
 
           color: #72e887;
 
@@ -703,7 +531,6 @@ export default function Experience() {
 
         .currentDot {
           width: 5px;
-
           height: 5px;
 
           border-radius: 50%;
@@ -712,12 +539,7 @@ export default function Experience() {
 
           box-shadow:
             0 0 8px
-              rgba(
-                39,
-                201,
-                63,
-                0.8
-              );
+            rgba(39, 201, 63, 0.8);
 
           animation:
             currentPulse
@@ -730,13 +552,11 @@ export default function Experience() {
           0%,
           100% {
             opacity: 0.5;
-
             transform: scale(1);
           }
 
           50% {
             opacity: 1;
-
             transform: scale(1.5);
           }
         }
@@ -794,27 +614,16 @@ export default function Experience() {
         }
 
         .experienceTag {
-          padding:
-            6px 10px;
+          padding: 6px 10px;
 
           border:
             1px solid
-              rgba(
-                133,
-                76,
-                230,
-                0.2
-              );
+            rgba(133, 76, 230, 0.2);
 
           border-radius: 6px;
 
           background:
-            rgba(
-              133,
-              76,
-              230,
-              0.05
-            );
+            rgba(133, 76, 230, 0.05);
 
           color: #a9a9b3;
 
@@ -831,20 +640,10 @@ export default function Experience() {
           color: #ffffff;
 
           background:
-            rgba(
-              133,
-              76,
-              230,
-              0.12
-            );
+            rgba(133, 76, 230, 0.12);
 
           border-color:
-            rgba(
-              133,
-              76,
-              230,
-              0.45
-            );
+            rgba(133, 76, 230, 0.45);
 
           transform:
             translateY(-2px);
@@ -861,12 +660,7 @@ export default function Experience() {
 
           border-top:
             1px solid
-              rgba(
-                255,
-                255,
-                255,
-                0.06
-              );
+            rgba(255, 255, 255, 0.06);
 
           text-align: center;
 
@@ -889,7 +683,7 @@ export default function Experience() {
             footerReveal
             0.8s
             ease
-            1.3s
+            1.5s
             forwards;
         }
 
@@ -904,27 +698,21 @@ export default function Experience() {
         ====================================== */
 
         @media (max-width: 800px) {
-
           .experienceSection {
-            padding:
-              90px 6%;
+            padding: 90px 6%;
           }
 
           .experienceHeader {
             display: block;
-
             margin-bottom: 55px;
           }
 
           .experienceIntro {
             margin-top: 25px;
-
             max-width: 600px;
           }
 
-          /*
-            Move timeline to left
-          */
+          /* Timeline moves to left */
 
           .experienceTimeline::before {
             left: 8px;
@@ -940,7 +728,7 @@ export default function Experience() {
           .experienceTimeline::before {
             animation:
               mobileTimelineGrow
-              1.6s
+              1.8s
               ease
               0.25s
               forwards;
@@ -954,10 +742,7 @@ export default function Experience() {
             }
           }
 
-          /*
-            Mobile cards all go
-            to the right of timeline
-          */
+          /* Mobile items */
 
           .experienceItem {
             display: block;
@@ -971,11 +756,9 @@ export default function Experience() {
             position: absolute;
 
             left: 0;
-
             top: 0;
 
             width: 16px;
-
             height: 100%;
           }
 
@@ -984,16 +767,12 @@ export default function Experience() {
           }
 
           .experienceDate {
-            margin:
-              0 0 12px;
+            margin: 0 0 12px;
 
             text-align: left !important;
           }
 
-          /*
-            Reset desktop alternating
-            positions on mobile
-          */
+          /* Reset desktop alternating layout */
 
           .experienceItem:nth-child(odd)
           .experienceDate,
@@ -1002,7 +781,6 @@ export default function Experience() {
             display: block;
 
             grid-column: auto;
-
             grid-row: auto;
 
             text-align: left;
@@ -1015,7 +793,6 @@ export default function Experience() {
             display: block;
 
             grid-column: auto;
-
             grid-row: auto;
           }
 
@@ -1029,18 +806,13 @@ export default function Experience() {
         ====================================== */
 
         @media (max-width: 500px) {
-
           .experienceSection {
-            padding:
-              75px 20px;
+            padding: 75px 20px;
           }
 
           .experienceTitle {
-            font-size:
-              3.2rem;
-
-            letter-spacing:
-              -2px;
+            font-size: 3.2rem;
+            letter-spacing: -2px;
           }
 
           .experienceRole {
@@ -1060,10 +832,7 @@ export default function Experience() {
            REDUCED MOTION
         ====================================== */
 
-        @media (
-          prefers-reduced-motion: reduce
-        ) {
-
+        @media (prefers-reduced-motion: reduce) {
           .experienceSection *,
           .experienceSection::before,
           .experienceSection::after {
@@ -1092,9 +861,7 @@ export default function Experience() {
           ================================= */}
 
           <div className="experienceHeader">
-
             <div>
-
               <div className="experienceNumber">
                 03 — EXPERIENCE
               </div>
@@ -1103,7 +870,6 @@ export default function Experience() {
                 My{" "}
                 <span>journey.</span>
               </h2>
-
             </div>
 
             <p className="experienceIntro">
@@ -1111,7 +877,6 @@ export default function Experience() {
               from academic projects to professional
               experience and freelance development.
             </p>
-
           </div>
 
           {/* =================================
@@ -1119,75 +884,68 @@ export default function Experience() {
           ================================= */}
 
           <div className="experienceTimeline">
+            {experiences.map((experience, index) => (
+              <div
+                className="experienceItem"
+                key={`${experience.title}-${experience.year}`}
+                style={{
+                  animationDelay: `${0.45 + index * 0.25}s`,
+                }}
+              >
+                {/* DATE */}
 
-            {experiences.map(
-              (experience) => (
-                <div
-                  className="experienceItem"
-                  key={experience.title}
-                >
-
-                  {/* DATE */}
-
-                  <div className="experienceDate">
-                    {experience.year}
-                  </div>
-
-                  {/* CENTER NODE */}
-
-                  <div className="timelineNode">
-
-                    <div className="timelineDot"></div>
-
-                  </div>
-
-                  {/* EXPERIENCE CARD */}
-
-                  <div className="experienceCard">
-
-                    {experience.current && (
-                      <div className="currentBadge">
-
-                        <span className="currentDot"></span>
-
-                        Current
-
-                      </div>
-                    )}
-
-                    <h3 className="experienceRole">
-                      {experience.title}
-                    </h3>
-
-                    <p className="experienceCompany">
-                      {experience.company}
-                    </p>
-
-                    <p className="experienceDescription">
-                      {experience.description}
-                    </p>
-
-                    <div className="experienceTags">
-
-                      {experience.technologies.map(
-                        (technology) => (
-                          <span
-                            key={technology}
-                            className="experienceTag"
-                          >
-                            {technology}
-                          </span>
-                        )
-                      )}
-
-                    </div>
-
-                  </div>
-
+                <div className="experienceDate">
+                  {experience.year}
                 </div>
-              )
-            )}
 
+                {/* CENTER NODE */}
+
+                <div className="timelineNode">
+                  <div
+                    className="timelineDot"
+                    style={{
+                      animationDelay: `${0.7 + index * 0.25}s`,
+                    }}
+                  />
+                </div>
+
+                {/* EXPERIENCE CARD */}
+
+                <div className="experienceCard">
+                  {experience.current && (
+                    <div className="currentBadge">
+                      <span className="currentDot" />
+                      Current
+                    </div>
+                  )}
+
+                  <h3 className="experienceRole">
+                    {experience.title}
+                  </h3>
+
+                  <p className="experienceCompany">
+                    {experience.company}
+                  </p>
+
+                  <p className="experienceDescription">
+                    {experience.description}
+                  </p>
+
+                  <div className="experienceTags">
+                    {experience.technologies.map(
+                      (technology) => (
+                        <span
+                          key={technology}
+                          className="experienceTag"
+                        >
+                          {technology}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* =================================
@@ -1197,7 +955,6 @@ export default function Experience() {
           <div className="experienceFooter">
             BUILDING • LEARNING • IMPROVING
           </div>
-
         </div>
       </section>
     </>

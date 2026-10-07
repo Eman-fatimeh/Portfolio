@@ -49,7 +49,7 @@ export default function Projects() {
       ],
       github: "https://github.com/Eman-fatimeh/VaultMind",
       demo: "https://vault-mind-project.vercel.app/",
-      demoLabel: "Demo Video",
+      demoLabel: "Demo",
     },
     {
       number: "02",
@@ -68,7 +68,7 @@ export default function Projects() {
       ],
       github: "https://github.com/Eman-fatimeh/SMART-OPD-Project",
       demo: "https://www.linkedin.com/posts/eman-fatima16_webdevelopment-python-fastapi-activity-7477048782271102976-b2PJ",
-      demoLabel: "Demo Video",
+      demoLabel: "Demo",
     },
   ];
 
