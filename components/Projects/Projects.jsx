@@ -48,7 +48,7 @@ export default function Projects() {
         "Google Gemini",
       ],
       github: "https://github.com/Eman-fatimeh/VaultMind",
-      demo: "https://vaultmind-demo.vercel.app",
+      demo: "https://vault-mind-project.vercel.app/",
       demoLabel: "Demo Video",
     },
     {
